@@ -1,4 +1,3 @@
-import applicationPackage.MyStack;
 import org.junit.Before;
 import org.junit.Test;
 

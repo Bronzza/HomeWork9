@@ -1,5 +1,3 @@
-package applicationPackage;
-
 public class MyStack<T> extends MyLinkedList implements MyStackInterface <T> {
 
     @Override

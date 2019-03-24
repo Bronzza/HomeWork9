@@ -1,5 +1,3 @@
-package applicationPackage;
-
 public class MyLinkedList<T> implements MyList<T> {
 
     private Node first = null;

@@ -1,5 +1,3 @@
-import applicationPackage.MyArrayList;
-
 import java.util.List;
 
 public  abstract  class MyArrayListTestAbs <T> {

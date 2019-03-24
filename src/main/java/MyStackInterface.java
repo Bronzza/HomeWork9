@@ -1,5 +1,3 @@
-package applicationPackage;
-
 public interface MyStackInterface <T> {
     public T push(T element);
 

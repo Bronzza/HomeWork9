@@ -1,4 +1,3 @@
-import applicationPackage.MyArrayList;
 import org.junit.Before;
 import org.junit.Test;
 

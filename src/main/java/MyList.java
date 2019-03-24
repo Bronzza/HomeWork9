@@ -1,5 +1,3 @@
-package applicationPackage;
-
 public interface MyList<T> {
     T get(int i);
 

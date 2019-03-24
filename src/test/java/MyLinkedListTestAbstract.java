@@ -1,5 +1,3 @@
-import applicationPackage.MyLinkedList;
-
 import java.util.List;
 
 public abstract class MyLinkedListTestAbstract<T>  {

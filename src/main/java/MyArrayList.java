@@ -1,5 +1,3 @@
-package applicationPackage;
-
 public class MyArrayList<T> implements MyList<T> {
     private Object[] array;
     private int counter = 0;
