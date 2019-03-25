@@ -27,7 +27,7 @@ public class MyStackTest extends MyStackTestAbstract<String> {
         for (int i = 0; i <= stackSize; i++) {
             myStack.pop();
         }
-        assertEquals(Exception.class, myStack.pop());
+        myStack.pop();
     }
 
     @Test
