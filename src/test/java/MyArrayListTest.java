@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class MyArrayListTest extends MyArrayListTestAbs<Integer> {
-    private int indexTest;
+    private static final int INDEX_TEST = 1;
     private static final Integer VALUE_FOR_TESTING  = 5;
 
     @Before
@@ -27,14 +27,14 @@ public class MyArrayListTest extends MyArrayListTestAbs<Integer> {
                     myArrayList.add(a);
                     normalList.add(a);
                 });
-        myArrayList.add(indexTest, value);
-        normalList.add(indexTest, value);
+        myArrayList.add(INDEX_TEST, value);
+        normalList.add(INDEX_TEST, value);
     }
 
     @Test
     public void get() {
-        assertEquals(myArrayList.get(indexTest), normalList.get(indexTest));
-        assertEquals(myArrayList.get(indexTest), value);
+        assertEquals(myArrayList.get(INDEX_TEST), normalList.get(INDEX_TEST));
+        assertEquals(myArrayList.get(INDEX_TEST), value);
         assertNull(myArrayList.get(myArrayList.size()));
     }
 
@@ -42,9 +42,8 @@ public class MyArrayListTest extends MyArrayListTestAbs<Integer> {
     public void add() {
         myArrayList.add(value);
         assertEquals(value, myArrayList.get(myArrayList.size() - 1));
-        indexTest = 1;
-        myArrayList.add(indexTest, value);
-        assertEquals(value, myArrayList.get(indexTest));
+        myArrayList.add(INDEX_TEST, value);
+        assertEquals(value, myArrayList.get(INDEX_TEST));
     }
 
     @Test
