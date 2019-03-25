@@ -1,17 +1,17 @@
+import lists.MyArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class MyArrayListTest extends MyArrayListTestAbs<Integer> {
-
     private int indexTest;
+    private static final Integer VALUE_FOR_TESTING  = 5;
 
     @Before
     public void setUp() {
@@ -57,13 +57,13 @@ public class MyArrayListTest extends MyArrayListTestAbs<Integer> {
     @Test
     public void size() {
         int size = myArrayList.size();
-        myArrayList.add(createRandomValue());
+        myArrayList.add(createSampleValue());
         assertEquals(size + 1, myArrayList.size());
     }
 
     @Override
     public Integer createSampleValue() {
-        return 10;
+        return VALUE_FOR_TESTING;
     }
 
     @Override
@@ -85,8 +85,7 @@ public class MyArrayListTest extends MyArrayListTestAbs<Integer> {
 
     @Override
     public Integer createRandomValue() {
-        Random rnd = new Random();
-        return rnd.nextInt(15);
+        return null;
     }
 
     @Override

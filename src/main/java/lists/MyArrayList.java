@@ -1,18 +1,27 @@
+package lists;
+
 public class MyArrayList<T> implements MyList<T> {
     private Object[] array;
     private int counter = 0;
-    private final int DEFAULT_CAPACITY = 10;
+    private final static int DEFAULT_CAPACITY = 10;
 
     public MyArrayList() {
         array = new Object[DEFAULT_CAPACITY];
     }
 
-
     @Override
     public T get(int i) {
-        for (int j = 0; j < array.length; j++) {
-            if (j == i) {
-                return (T) array[j];
+        if (counter / 2 < i) {
+            for (int j = 0; j < array.length; j++) {
+                if (j == i) {
+                    return (T) array[j];
+                }
+            }
+        } else {
+            for (int j = counter; j >= 0; j--) {
+                if (j == i) {
+                    return (T) array[j];
+                }
             }
         }
         return null;
@@ -27,9 +36,8 @@ public class MyArrayList<T> implements MyList<T> {
         }
     }
 
-
     public void add(int index, T t) {
-        if (index < 0 || index > counter) {
+        if (isValidIndexAdd(index)) {
             throw new IndexOutOfBoundsException();
         }
         if (index == counter) {
@@ -45,7 +53,10 @@ public class MyArrayList<T> implements MyList<T> {
         if (checkIsExpand()) {
             expandArray();
         }
+    }
 
+    private boolean isValidIndexAdd(int index) {
+        return index < 0 || index > counter;
     }
 
     @Override
@@ -91,9 +102,14 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     private void expandArray() {
-        Object[] temp = new Object[(int) (array.length * 1.5)];
+        double expandRate;
+        if (array.length == 1) {
+            expandRate = 2;
+        } else {
+            expandRate = 1.5;
+        }
+        Object[] temp = new Object[(int) (array.length * expandRate)];
         System.arraycopy(array, 0, temp, 0, array.length);
         array = temp;
     }
-
 }

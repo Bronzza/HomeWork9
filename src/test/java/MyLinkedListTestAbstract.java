@@ -1,7 +1,8 @@
+import lists.MyLinkedList;
+
 import java.util.List;
 
 public abstract class MyLinkedListTestAbstract<T>  {
-
     protected MyLinkedList<T> myLinkedList;
     protected List <T> normalList;
     protected T value;
@@ -12,6 +13,4 @@ public abstract class MyLinkedListTestAbstract<T>  {
     public abstract T [] dataForList(int sizeArray);
     public abstract T createRandomValue();
     public abstract void fillArray (T [] array);
-
-
 }

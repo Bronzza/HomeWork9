@@ -1,5 +1,8 @@
-public class MyLinkedList<T> implements MyList<T> {
+package lists;
 
+import exceptions.NoSuchValueException;
+
+public class MyLinkedList<T> implements MyList<T> {
     private Node first = null;
     private Node last = null;
     private int size = 0;
@@ -9,7 +12,6 @@ public class MyLinkedList<T> implements MyList<T> {
         private Node<T> next;
         private Node<T> prev;
         private int size = 0;
-
 
         public Node(T value) {
             this.value = value;
@@ -49,7 +51,7 @@ public class MyLinkedList<T> implements MyList<T> {
         }
     }
 
-    public void add(int index, T element)  {
+    public void add(int index, T element) {
         if (checkIndex(index)) {
             if (index == size - 1) {
                 add(element);
@@ -72,7 +74,6 @@ public class MyLinkedList<T> implements MyList<T> {
         } else {
             throw new IndexOutOfBoundsException();
         }
-
     }
 
     public void addFirst(T t) {
@@ -89,7 +90,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     private T unlink(Node<T> node) {
         if (node == null) {
-            throw new NullPointerException();
+            throw new NoSuchValueException("No such value in the list");
         }
         T value = node.value;
         Node<T> next = node.next;
@@ -100,14 +101,12 @@ public class MyLinkedList<T> implements MyList<T> {
             prev.next = next;
             node.prev = null;
         }
-
         if (next == null) {
             last = prev;
         } else {
             next.prev = prev;
             node.next = null;
         }
-
         node.value = null;
         size--;
         return value;
@@ -154,6 +153,4 @@ public class MyLinkedList<T> implements MyList<T> {
             return sb.toString();
         }
     }
-
-
 }

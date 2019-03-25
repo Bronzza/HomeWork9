@@ -1,3 +1,4 @@
+import lists.MyLinkedList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -9,12 +10,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertNull;
+
 
 public class MyLinkedListTest extends MyLinkedListTestAbstract<Integer> {
+    private static final Integer VALUE_FOR_TESTING = 5;
 
     @Rule
-    public ExpectedException trown = ExpectedException.none();
+    public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void setUp() {
@@ -47,7 +51,6 @@ public class MyLinkedListTest extends MyLinkedListTestAbstract<Integer> {
         assertEquals(value, myLinkedList.get(myLinkedList.size() - 1));
         myLinkedList.add(null);
         assertNull(myLinkedList.get(myLinkedList.size()-1));
-
     }
 
     @Test
@@ -55,11 +58,10 @@ public class MyLinkedListTest extends MyLinkedListTestAbstract<Integer> {
         int index = randomInt(myLinkedList.size());
         myLinkedList.add(index, value);
         assertEquals(value, myLinkedList.get(index));
-        trown.expect(IndexOutOfBoundsException.class);
+        thrown.expect(IndexOutOfBoundsException.class);
         myLinkedList.add(-1, value);
-        trown.expect(IndexOutOfBoundsException.class);
+        thrown.expect(IndexOutOfBoundsException.class);
         myLinkedList.add(myLinkedList.size()+1, value);
-
     }
 
     @Test
@@ -76,9 +78,9 @@ public class MyLinkedListTest extends MyLinkedListTestAbstract<Integer> {
         assertEquals(value, myLinkedList.get(size));
         myLinkedList.remove(size);
         assertEquals(size, myLinkedList.size());
-        trown.expect(IndexOutOfBoundsException.class);
+        thrown.expect(IndexOutOfBoundsException.class);
         myLinkedList.get(size);
-        trown.expect(NullPointerException.class);
+        thrown.expect(NullPointerException.class);
         myLinkedList.remove(myLinkedList.size()+1);
     }
 
@@ -99,7 +101,7 @@ public class MyLinkedListTest extends MyLinkedListTestAbstract<Integer> {
 
     @Override
     public Integer createSampleValue() {
-        return 10;
+        return VALUE_FOR_TESTING;
     }
 
     @Override
@@ -121,8 +123,7 @@ public class MyLinkedListTest extends MyLinkedListTestAbstract<Integer> {
 
     @Override
     public Integer createRandomValue() {
-        Random rnd = new Random();
-        return rnd.nextInt(15);
+        return null;
     }
 
     @Override
